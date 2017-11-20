@@ -1,11 +1,19 @@
 # Analiza podatkov s programom R, 2017/18
 
+Avtor: Andraž Mur
+
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
 ## Tematika
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal. Tukaj boste
-napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+ANALIZA SVETOVNIH PRVENSTEV V NOGOMETU
+
+Odločil sem se, da bom v projektu analiziral zgodovino Fifinih svetnovnih prvesntev v nogometu, saj je nogomet najverjtneje globalno najbolj priljublen šport in tudi meni najljubši, svetovna prvenstva pa so največji in najbolj zanimiv dogodek v tem športu. Natančneje bom analiziral uspešnost svetovnih držav pri kvalificiranju na prvesnstva ter njihovo uspešnost na njih. Posebej si bom ogledal tudi najuspešnejše države v zgodovini svetovnih prvenstev, njihove najboljše uvrstitve ter njihovo učinkovitost.
+
+Podatke bom črpal iz Wikipedije, uporabil pa bom tudi podatke, ki so dostopnji na uradni strani Mednarodne nogometne federacije FIFA):
+* https://en.wikipedia.org/wiki/FIFA_World_Cup
+* https://en.wikipedia.org/wiki/National_team_appearances_in_the_FIFA_World_Cup#Comprehensive_team_results_by_tournament
+* http://resources.fifa.com/mm/document/fifafacts/mencompwc/01/18/03/18/143975-factsheet-fifaworldcupall-timeranking_neutral.pdf
 
 ## Program
 
