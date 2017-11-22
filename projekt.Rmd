@@ -21,7 +21,7 @@ source("lib/libraries.r", encoding = "UTF-8")
 
 # Izbira teme
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+Za temo svojega projetka sem določil analizo svetovnih prvenstev v nogometu. Za to tematiko sem se odločil, ker je nogomet moj najljubši šport, še posebej rad pa spremljam nogometna svetovna prvenstva. Pri projetku bom opazoval uspešnost držav v kvalifikacijah za ta dogodek, uspešnost držav na samih prvenstvih ter njihovo učinkovitost. Moj cilj je poiskati najuspešnejše države, ki so na prvenstvih nastopale skozi zgodovino, ter države, ki so bile glede na svoje odigrane tekme na prvenstvih najučinkovitejše.
 
 ***
 
