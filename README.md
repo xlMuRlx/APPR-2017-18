@@ -15,6 +15,34 @@ Podatke bom črpal z Wikipedije, uporabil pa bom tudi podatke, ki so dostopni na
 * https://en.wikipedia.org/wiki/National_team_appearances_in_the_FIFA_World_Cup#Comprehensive_team_results_by_tournament
 * http://resources.fifa.com/mm/document/fifafacts/mencompwc/01/18/03/18/143975-factsheet-fifaworldcupall-timeranking_neutral.pdf
 
+
+## Tabele
+
+TABELA 1: USPEŠNOST DRŽAV PRI KVALIFICIRANJU NA SVETOVNA PRVENSTVA
+Stolpci: 
+* Država
+* Leto prve uvrstitve na svetovno prvenstvo
+* Število udeležb na svetovnih prvenstvih
+* Procentualna uspešnost pri kvalificiranju
+
+TABELA 2: USPEŠNOST DRŽAV NA ZAKLJUČNIH TURNIRJIH
+Stolpci:
+* Država
+* Najboljša uvrstitev na svetovnem prvenstvu
+* Število zmag na zaključnih turnirjih
+* Število porazov na zaključnih turnirjih
+* Število remijev na zaključnih turnirjih
+Dodatno bom še države, ki so kadarkoli osvojile naslov svetovnega prvaka, prikazal na zemljevidu.
+
+TABELA 3: UČINKOVITOST DRŽAV NA SVETOVNIH PRVENSTVIH
+Stolpci:
+* Država
+* Število odigranih tekem na zaključnih turnirjih
+* Število vseh danih zadetkov na svetovnih prvenstvih
+* Število vseh prejetih zadetkov na svetovnih prvenstvih
+* Povprečno število zadetkov doseženih na tekmo
+
+
 ## Program
 
 Glavni program in poročilo se nahajata v datoteki `projekt.Rmd`. Ko ga prevedemo,
