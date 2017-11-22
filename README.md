@@ -18,7 +18,7 @@ Podatke bom črpal z Wikipedije, uporabil pa bom tudi podatke, ki so dostopni na
 
 ## Tabele
 
-TABELA 1: USPEŠNOST DRŽAV PRI KVALIFICIRANJU NA SVETOVNA PRVENSTVA
+### TABELA 1: USPEŠNOST DRŽAV PRI KVALIFICIRANJU NA SVETOVNA PRVENSTVA
 
 Stolpci: 
 * Država
@@ -26,7 +26,7 @@ Stolpci:
 * Število udeležb na svetovnih prvenstvih
 * Procentualna uspešnost pri kvalificiranju
 
-TABELA 2: USPEŠNOST DRŽAV NA ZAKLJUČNIH TURNIRJIH
+### TABELA 2: USPEŠNOST DRŽAV NA ZAKLJUČNIH TURNIRJIH
 
 Stolpci:
 * Država
@@ -37,7 +37,7 @@ Stolpci:
 
 Dodatno bom še države, ki so kadarkoli osvojile naslov svetovnega prvaka, prikazal na zemljevidu.
 
-TABELA 3: UČINKOVITOST DRŽAV NA SVETOVNIH PRVENSTVIH
+### TABELA 3: UČINKOVITOST DRŽAV NA SVETOVNIH PRVENSTVIH
 
 Stolpci:
 * Država
