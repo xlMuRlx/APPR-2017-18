@@ -32,7 +32,7 @@ Stolpci:
 * Število zmag na zaključnih turnirjih
 * Število porazov na zaključnih turnirjih
 * Število remijev na zaključnih turnirjih
-Dodatno bom še države, ki so kadarkoli osvojile naslov svetovnega prvaka, prikazal na zemljevidu.
+* Dodatno bom še države, ki so kadarkoli osvojile naslov svetovnega prvaka, prikazal na zemljevidu.
 
 TABELA 3: UČINKOVITOST DRŽAV NA SVETOVNIH PRVENSTVIH
 Stolpci:
