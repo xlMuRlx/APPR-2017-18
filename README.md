@@ -30,14 +30,24 @@ Stolpci:
 
 Stolpci:
 * Država
-* Najboljša uvrstitev na svetovnem prvenstvu
 * Število zmag na zaključnih turnirjih
 * Število porazov na zaključnih turnirjih
 * Število remijev na zaključnih turnirjih
 
 Dodatno bom še države, ki so kadarkoli osvojile naslov svetovnega prvaka, prikazal na zemljevidu.
 
-### TABELA 3: UČINKOVITOST DRŽAV NA SVETOVNIH PRVENSTVIH
+### TABELA 3: USPEŠNOST DRŽAV NA POSAMEZNIH PRVENSTVIH
+
+Stolpci:
+* Država
+* Število uvrstitev na svetovna prvenstva
+* 20 stolpcev, od katerih je vsak namenjen posameznemu prvenstvu
+* Povprečna uvrstitev države na prvenstvih
+* Najboljša uvrstitev na svetovnem prvenstvu
+
+V tej tabeli bodo za vsako državo predstavljene uvrstitve na svetovih prvenstvih, v predzadnjem stolpcu pa bo izračunana povprečna uvrstitev, ki jo je posamezna država dosegla na vseh svetovnih prvestvih, na katere se je uvrstila. Zadnji stolpec bo vseboval podatke o najboljši uvrstitvi države na kateremkoli prvenstvu, da bomo laho le-to primerjali z njeno povprečno uvrstitvijo.
+
+### TABELA 4: UČINKOVITOST DRŽAV NA SVETOVNIH PRVENSTVIH
 
 Stolpci:
 * Država
