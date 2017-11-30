@@ -3,18 +3,19 @@
 sl <- locale("sl", decimal_mark = ",", grouping_mark = ".")
 
 # Funkcija, ki uvozi občine iz Wikipedije
-uvozi.obcine <- function() {
-  link <- "http://sl.wikipedia.org/wiki/Seznam_ob%C4%8Din_v_Sloveniji"
+uvozi.top4 <- function() {
+  link <- "https://en.wikipedia.org/wiki/FIFA_World_Cup"
   stran <- html_session(link) %>% read_html()
-  tabela <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>%
-    .[[1]] %>% html_table(dec = ",")
-  for (i in 1:ncol(tabela)) {
-    if (is.character(tabela[[i]])) {
-      Encoding(tabela[[i]]) <- "UTF-8"
+  tabela_top4 <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>%
+    .[[2]] %>% html_table(dec = ",", fill = TRUE)
+  for (i in 1:ncol(tabela_top4)) {
+    if (is.character(tabela_top4[[i]])) {
+      Encoding(tabela_top4[[i]]) <- "UTF-8"
     }
   }
-  colnames(tabela) <- c("obcina", "povrsina", "prebivalci", "gostota", "naselja",
-                        "ustanovitev", "pokrajina", "regija", "odcepitev")
+  colnames(tabela_top4) <- c("ekipa", "st_prvak", "st_druga","st_tretja",
+                             "st_cetrta","st_top4","st_top3", "st_top2")
+  
   tabela$obcina <- gsub("Slovenskih", "Slov.", tabela$obcina)
   tabela$obcina[tabela$obcina == "Kanal ob Soči"] <- "Kanal"
   tabela$obcina[tabela$obcina == "Loški potok"] <- "Loški Potok"
@@ -27,6 +28,20 @@ uvozi.obcine <- function() {
   return(tabela)
 }
 
+#uvozi napačno tabelo!
+uvozi.uvrstitve <- function() {
+  link <- "https://en.wikipedia.org/wiki/National_team_appearances_in_the_FIFA_World_Cup#Comprehensive_team_results_by_tournament"
+  stran <- html_session(link) %>% read_html()
+  tabela_uvrstitve <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>%
+    .[[1]] %>% html_table(dec = ",", fill = TRUE)
+  for (i in 1:ncol(tabela_uvrstitve)) {
+    if (is.character(tabela_uvrstitve[[i]])) {
+      Encoding(tabela_uvrstitve[[i]]) <- "UTF-8"
+    }
+  }
+  colnames(tabela_uvrstitve) <- c("ekipa", "st_prvak", "st_druga","st_tretja",
+                             "st_cetrta","st_top4","st_top3", "st_top2")
+}
 # Funkcija, ki uvozi podatke iz datoteke druzine.csv
 uvozi.druzine <- function(obcine) {
   data <- read_csv2("podatki/druzine.csv", col_names = c("obcina", 1:4),
