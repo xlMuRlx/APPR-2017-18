@@ -1,11 +1,61 @@
 # Analiza podatkov s programom R, 2017/18
 
+Avtor: Andraž Mur
+
 Repozitorij z gradivi pri predmetu APPR v študijskem letu 2017/18
 
 ## Tematika
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal. Tukaj boste
-napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+ANALIZA SVETOVNIH PRVENSTEV V NOGOMETU
+
+Odločil sem se, da bom v projektu analiziral zgodovino Fifinih svetovnih prvenstev v nogometu, saj je nogomet najverjetneje globalno najbolj priljubljen šport in tudi meni najljubši, svetovna prvenstva pa so največji in najbolj zanimivi dogodek v tem športu. Natančneje bom analiziral uspešnost svetovnih držav pri kvalificiranju na prvenstva ter njihovo uspešnost na njih. Posebej si bom ogledal tudi najuspešnejše države v zgodovini svetovnih prvenstev, njihove najboljše uvrstitve ter njihovo učinkovitost.
+
+Podatke bom črpal z Wikipedije, uporabil pa bom tudi podatke, ki so dostopni na uradni strani Mednarodne nogometne federacije (FIFA):
+* https://en.wikipedia.org/wiki/FIFA_World_Cup
+* https://en.wikipedia.org/wiki/National_team_appearances_in_the_FIFA_World_Cup#Comprehensive_team_results_by_tournament
+* http://resources.fifa.com/mm/document/fifafacts/mencompwc/01/18/03/18/143975-factsheet-fifaworldcupall-timeranking_neutral.pdf
+
+
+## Tabele
+
+### TABELA 1: USPEŠNOST DRŽAV PRI KVALIFICIRANJU NA SVETOVNA PRVENSTVA
+
+Stolpci: 
+* Država
+* Leto prve uvrstitve na svetovno prvenstvo
+* Število udeležb na svetovnih prvenstvih
+* Procentualna uspešnost pri kvalificiranju
+
+### TABELA 2: USPEŠNOST DRŽAV NA ZAKLJUČNIH TURNIRJIH
+
+Stolpci:
+* Država
+* Število zmag na zaključnih turnirjih
+* Število porazov na zaključnih turnirjih
+* Število remijev na zaključnih turnirjih
+
+Dodatno bom še države, ki so kadarkoli osvojile naslov svetovnega prvaka, prikazal na zemljevidu.
+
+### TABELA 3: USPEŠNOST DRŽAV NA POSAMEZNIH PRVENSTVIH
+
+Stolpci:
+* Država
+* Število uvrstitev na svetovna prvenstva
+* 20 stolpcev, od katerih je vsak namenjen posameznemu prvenstvu
+* Povprečna uvrstitev države na prvenstvih
+* Najboljša uvrstitev na svetovnem prvenstvu
+
+V tej tabeli bodo za vsako državo predstavljene uvrstitve na svetovih prvenstvih, v predzadnjem stolpcu pa bo izračunana povprečna uvrstitev, ki jo je posamezna država dosegla na vseh svetovnih prvestvih, na katere se je uvrstila. Zadnji stolpec bo vseboval podatke o najboljši uvrstitvi države na kateremkoli prvenstvu, da bomo laho le-to primerjali z njeno povprečno uvrstitvijo.
+
+### TABELA 4: UČINKOVITOST DRŽAV NA SVETOVNIH PRVENSTVIH
+
+Stolpci:
+* Država
+* Število odigranih tekem na zaključnih turnirjih
+* Število vseh danih zadetkov na svetovnih prvenstvih
+* Število vseh prejetih zadetkov na svetovnih prvenstvih
+* Povprečno število zadetkov doseženih na tekmo
+
 
 ## Program
 
