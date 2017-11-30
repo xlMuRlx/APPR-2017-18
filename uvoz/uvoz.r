@@ -32,15 +32,15 @@ uvozi.top4 <- function() {
 uvozi.uvrstitve <- function() {
   link <- "https://en.wikipedia.org/wiki/National_team_appearances_in_the_FIFA_World_Cup#Comprehensive_team_results_by_tournament"
   stran <- html_session(link) %>% read_html()
-  tabela_uvrstitve <- stran %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>%
-    .[[1]] %>% html_table(dec = ",", fill = TRUE)
+  tabela_uvrstitve <- stran %>% html_nodes(xpath="//table[@class='wikitable']") %>%
+    .[[2]] %>% html_table(dec = ",", fill = TRUE)
   for (i in 1:ncol(tabela_uvrstitve)) {
     if (is.character(tabela_uvrstitve[[i]])) {
       Encoding(tabela_uvrstitve[[i]]) <- "UTF-8"
     }
   }
-  colnames(tabela_uvrstitve) <- c("ekipa", "st_prvak", "st_druga","st_tretja",
-                             "st_cetrta","st_top4","st_top3", "st_top2")
+#  colnames(tabela_uvrstitve) <- c("ekipa", "st_prvak", "st_druga","st_tretja",
+#                             "st_cetrta","st_top4","st_top3", "st_top2")
 }
 # Funkcija, ki uvozi podatke iz datoteke druzine.csv
 uvozi.druzine <- function(obcine) {
