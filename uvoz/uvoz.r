@@ -17,6 +17,9 @@ colnames(top4) <- c("ekipa", "st_prvak", "st_druga","st_tretja",
 
 top4$ekipa <- gsub("^", "", top4$ekipa)
 top4$ekipa <- gsub("#", "", top4$ekipa)
+top4$st_top3 <- as.numeric(top4$st_top3)
+top4$st_top2 <- as.numeric(top4$st_top2)
+
 
   
 #  tabela$obcina <- gsub("Slovenskih", "Slov.", tabela$obcina)
