@@ -16,6 +16,7 @@ colnames(top4) <- c("ekipa", "st_prvak", "st_druga","st_tretja",
                     "st_cetrta","st_top4","st_top3", "st_top2")
 
 top4$ekipa <- gsub("^", "", top4$ekipa)
+top4$ekipa <- gsub("#", "", top4$ekipa)
 
   
 #  tabela$obcina <- gsub("Slovenskih", "Slov.", tabela$obcina)
@@ -71,3 +72,4 @@ prvenstva$zmaga <- round(prvenstva$zmaga)
 #  data$obcina <- factor(data$obcina, levels = obcine)
 #  return(data)
 #}
+

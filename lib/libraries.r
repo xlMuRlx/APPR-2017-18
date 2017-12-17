@@ -8,6 +8,7 @@ library(reshape2)
 library(shiny)
 library(xlsx)
 library(readxl)
+library(stringr)
 
 # Uvozimo funkcije za pobiranje in uvoz zemljevida.
 source("lib/uvozi.zemljevid.r", encoding = "UTF-8")
