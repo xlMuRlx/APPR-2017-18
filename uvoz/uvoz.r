@@ -51,8 +51,10 @@ stolpci <- c("ekipa", seq(1930, 1938, 4), seq(1950, 2018, 4),
              "skupne_uvr", "proc_uspesnost")
 colnames(uvrstitve) <- stolpci
 uvrstitve <- uvrstitve[-c(25, 53, 82), ]
-
-
+uvrstitve <- uvrstitve %>% separate(skupne_uvr, c("st_uvr", "st_kval"), "/")
+uvrstitve$st_uvr <- parse_integer(uvrstitve$st_uvr)
+uvrstitve$st_kval <- parse_integer(uvrstitve$st_kval)
+uvrstitve$proc_uspesnost <- parse_number(uvrstitve$proc_uspesnost)
 
 
 # Uvoz podatkov iz datoteke Excel
@@ -68,9 +70,16 @@ colnames(prvenstva) <- c("ekipa", "odigrane", "zmaga", "remi", "poraz", "st_dose
                          "st_prejeti", seq(1930, 1938, 4), seq(1950, 2014, 4))
 prvenstva <- prvenstva[-c(78, 79, 80), ]
 prvenstva$zmaga <- round(prvenstva$zmaga)
+prvenstva <- melt(prvenstva, "ekipa", "leto", "uvrstitev")
 
+ucinkovitost <- prvenstva[1:7]
 
-#uvozi.druzine <- function(obcine) {
+prvenstva <- melt(prvenstva[c(1, 8:ncol(prvenstva))], id="ekipa")
+colnames(prvenstva) <- c("ekipa", "leto", "uvrstitev")
+prvenstva <- prvenstva %>% arrange(ekipa)
+prvenstva <- prvenstva %>% drop_na(uvrstitev)
+
+#  uvozi.druzine <- function(obcine) {
 #  data <- read_csv2("podatki/druzine.csv", col_names = c("obcina", 1:4),
 #                    locale = locale(encoding = "Windows-1250"))
 #  data$obcina <- data$obcina %>% strapplyc("^([^/]*)") %>% unlist() %>%
