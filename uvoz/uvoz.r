@@ -15,10 +15,13 @@ for (i in 1:ncol(top4)) {
 colnames(top4) <- c("ekipa", "st_prvak", "st_druga","st_tretja",
                     "st_cetrta","st_top4","st_top3", "st_top2")
 
-top4$ekipa <- gsub("^", "", top4$ekipa)
-top4$ekipa <- gsub("#", "", top4$ekipa)
+top4$ekipa <- gsub("[#^]", "", top4$ekipa)
 top4$st_top3 <- as.numeric(top4$st_top3)
 top4$st_top2 <- as.numeric(top4$st_top2)
+top4$st_prvak <- gsub("^&", NA, top4$st_prvak)
+top4$st_druga <- gsub("^&", NA, top4$st_druga)
+top4$st_tretja <- gsub("^&", NA, top4$st_tretja)
+top4$st_cetrta <- gsub("^&", NA, top4$st_cetrta)
 
 
   
@@ -44,8 +47,12 @@ for (i in 1:ncol(uvrstitve)) {
     Encoding(uvrstitve[[i]]) <- "UTF-8"
   }
 }
-colnames(uvrstitve) <- c("ekipa", seq(1930, 1938, 4), seq(1950, 2018, 4),
-                           "skupne_uvr", "proc_uspesnost")
+stolpci <- c("ekipa", seq(1930, 1938, 4), seq(1950, 2018, 4),
+             "skupne_uvr", "proc_uspesnost")
+colnames(uvrstitve) <- stolpci
+uvrstitve <- uvrstitve[-c(25, 53, 82), ]
+
+
 
 
 # Uvoz podatkov iz datoteke Excel

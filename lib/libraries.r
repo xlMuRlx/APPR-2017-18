@@ -6,7 +6,6 @@ library(gsubfn)
 library(ggplot2)
 library(reshape2)
 library(shiny)
-library(xlsx)
 library(readxl)
 library(stringr)
 
