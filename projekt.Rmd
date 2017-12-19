@@ -49,7 +49,7 @@ Prenesel sem podatke o uspešnosti držav na posameznih svetovnih prvenstvih ter
 
 3. V tabeli **tekme** pa so prikazani podatki o uspešnosti držav na odigranih tekmah na svetovnih prvenstvih.
 - `ekipa` - spremenljivka: ime ekipe (besedilo)
-- `izid` - spremenljivka: pove, ali se je odigrana tekma za opazovano državo končala z zmago, remijem ali porazom (besedilo)
+- `izid` - spremenljivka: pove, ali se je odigrana tekma za opazovano ekipo končala z zmago, remijem ali porazom (besedilo)
 - `stevilo` - meritev: število odigranih tekem s prej omenjenim izidom
 ```kable(head(tekme))
 ```
