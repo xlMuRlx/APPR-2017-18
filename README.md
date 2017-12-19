@@ -11,7 +11,6 @@ ANALIZA SVETOVNIH PRVENSTEV V NOGOMETU
 Odločil sem se, da bom v projektu analiziral zgodovino Fifinih svetovnih prvenstev v nogometu, saj je nogomet najverjetneje globalno najbolj priljubljen šport in tudi meni najljubši, svetovna prvenstva pa so največji in najbolj zanimivi dogodek v tem športu. Natančneje bom analiziral uspešnost svetovnih držav pri kvalificiranju na prvenstva ter njihovo uspešnost na njih. Posebej si bom ogledal tudi najuspešnejše države v zgodovini svetovnih prvenstev, njihove najboljše uvrstitve ter njihovo učinkovitost.
 
 Podatke bom črpal z Wikipedije, uporabil pa bom tudi podatke, ki so dostopni na uradni strani Mednarodne nogometne federacije (FIFA):
-* https://en.wikipedia.org/wiki/FIFA_World_Cup
 * https://en.wikipedia.org/wiki/National_team_appearances_in_the_FIFA_World_Cup#Comprehensive_team_results_by_tournament
 * http://resources.fifa.com/mm/document/fifafacts/mencompwc/01/18/03/18/143975-factsheet-fifaworldcupall-timeranking_neutral.pdf
 
@@ -82,6 +81,7 @@ Za zagon tega vzorca je potrebno namestiti sledeče pakete za R:
 * `sp` - za delo z zemljevidi
 * `digest` - za zgoščevalne funkcije (uporabljajo se za shranjevanje zemljevidov)
 * `readr` - za branje podatkov
+* `readxl` - za branje podatkov iz datotek vrste Excel
 * `rvest` - za pobiranje spletnih strani
 * `reshape2` - za preoblikovanje podatkov v obliko *tidy data*
 * `dplyr` - za delo s podatki
