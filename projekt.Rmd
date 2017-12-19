@@ -37,20 +37,25 @@ Prenesel sem podatke o uspešnosti držav na posameznih svetovnih prvenstvih ter
 - `ekipa` - spremenljivka: ime ekipe (besedilo)
 - `tip` - spremenljivka: navede tip zadetka, torej ali so bili zadetki s strani države prejeti ali doseženi (besedilo)
 - `stevilo` - meritev: število zadetkov prej navedenega tipa
-``kable(head(ucinkovitost))``
+
+kable(head(ucinkovitost))
+
 
 2. Tabela **koncne.uvrstitve** prikazuje uvrstitev države na prvenstvih, katerih se je udeležila. Ker za svetovno prvenstvo, ki bo potekalo leta 2018 v Rusiji, seveda še nimamo podatkov o uvrstitvah, imamo pri uvrstitvni naveden NA, saj podatek, da se je država uvrstila na omenjeno prvenstvo še vedno potrebujemo.
 - `ekipa` - spremenljivka: ime ekipe (besedilo)
 - `leto` - spremenljivka: leto, v katerem je potekalo svetovno prvenstvo (celo število)
 - `uvrstitev` - meritev: uvrstitev države na prvenstvu
-``kable(head(koncne.uvrstitve))``
+
+kable(head(koncne.uvrstitve))
+
 
 
 3. V tabeli **tekme** pa so prikazani podatki o uspešnosti držav na odigranih tekmah na svetovnih prvenstvih.
 - `ekipa` - spremenljivka: ime ekipe (besedilo)
 - `izid` - spremenljivka: pove, ali se je odigrana tekma za opazovano ekipo končala z zmago, remijem ali porazom (besedilo)
 - `stevilo` - meritev: število odigranih tekem s prej omenjenim izidom
-``kable(head(tekme))``
+
+kable(head(tekme))
 
 ***
 
