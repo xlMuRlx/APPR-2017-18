@@ -1,17 +1,7 @@
 # 2. faza: Uvoz podatkov
-  
-#  tabela$obcina <- gsub("Slovenskih", "Slov.", tabela$obcina)
-#  tabela$obcina[tabela$obcina == "Kanal ob Soči"] <- "Kanal"
-#  tabela$obcina[tabela$obcina == "Loški potok"] <- "Loški Potok"
-#  for (col in c("povrsina", "prebivalci", "gostota", "naselja", "ustanovitev")) {
-#    tabela[[col]] <- parse_number(tabela[[col]], na = "-", locale = sl)
-#  }
-#  for (col in c("obcina", "pokrajina", "regija")) {
-#    tabela[[col]] <- factor(tabela[[col]])
-#  }
-#  return(tabela)
-#}
 
+
+# Uvoz podatkov in Wikipedije
 
 link <- "https://en.wikipedia.org/wiki/National_team_appearances_in_the_FIFA_World_Cup#Comprehensive_team_results_by_tournament"
 stran <- html_session(link) %>% read_html()
@@ -65,18 +55,4 @@ tekme <- prvenstva[c(1, 3, 4, 5)]
 tekme <- melt(tekme, id = "ekipa", na.rm = TRUE)
 colnames(tekme) <- c("ekipa", "izid", "stevilo")
 tekme <- tekme %>% arrange(ekipa)
-
-
-#  uvozi.druzine <- function(obcine) {
-#  data <- read_csv2("podatki/druzine.csv", col_names = c("obcina", 1:4),
-#                    locale = locale(encoding = "Windows-1250"))
-#  data$obcina <- data$obcina %>% strapplyc("^([^/]*)") %>% unlist() %>%
-#    strapplyc("([^ ]+)") %>% sapply(paste, collapse = " ") %>% unlist()
-#  data$obcina[data$obcina == "Sveti Jurij"] <- "Sveti Jurij ob Ščavnici"
-#  data <- data %>% melt(id.vars = "obcina", variable.name = "velikost.druzine",
-#                        value.name = "stevilo.druzin")
-#  data$velikost.druzine <- parse_number(data$velikost.druzine)
-#  data$obcina <- factor(data$obcina, levels = obcine)
-#  return(data)
-#}
 

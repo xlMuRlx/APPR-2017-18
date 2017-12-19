@@ -31,32 +31,27 @@ Za temo svojega projetka sem določil analizo svetovnih prvenstev v nogometu. Za
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML
-z Wikipedije. Podatke imamo v dveh razpredelnicah v obliki *tidy data*.
+Prenesel sem podatke o uspešnosti držav na posameznih svetovnih prvenstvih ter njihovo učinkovitost iz uradne strani Mednarodne nogometne federacije (FIFA). Ker pa so bili podatki v pdf obliki, sem jih najprej pretvoril v excel datoteko. Nato sem podatke uvozil ter preuredil v obliko *tidy data*. Podobno sem storil tudi s podatki uvoženimi iz Wikipedije, pri katerih pa se je izkazalo, da potrebujem le en stolpec, ki sem ga tako dodal tabeli koncne.uvrstitve. Podatke imamo navedene v treh tabelah, ki so natančneje opisane spodaj. Na koncu opisa vsake tabele pa imamo podan še prednogled izgleda same tabele.
 
-1. `druzine` - podatki o družinah za vsako občino
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `velikost.druzine` - spremenljivka: število otrok v družini (število: 1, 2, 3 ali 4, kjer zadnja vrednost pomeni 4 ali več),
-  - `stevilo.druzin` - meritev: število družin z ustreznim številom otrok v ustrezni občini (število).
+1. V tabeli **ucinkovitost** je prikazana učinkovitost držav na vseh svetovnih prvenstvih, na katera se je posamezna država uvrstila.
+- `ekipa` - spremenljivka: ime ekipe (besedilo)
+- `tip` - spremenljivka: navede tip zadetka, torej ali so bili zadetki s strani države prejeti ali doseženi (besedilo)
+- `stevilo` - meritev: število zadetkov prej navedenega tipa
+```kable(head(ucinkovitost))
+```
 
-2. `obcine` - podatki o občinah
-  - `obcina` - spremenljivka: ime občine (neurejen faktor),
-  - `povrsina` - meritev: površina občine v km$^2$ (število),
-  - `prebivalci` - meritev: prebivalstvo občine (število),
-  - `gostota` - meritev: število prebivalcev na km$^2$ (število),
-  - `naselja` - meritev: število naselij v občini (število),
-  - `ustanovitev` - meritev: leto ustanovitve občine (število),
-  - `pokrajina` - meritev: pokrajina, ki ji občina pripada (neurejen faktor),
-  - `regija` - meritev: regija, ki ji občina pripada (neurejen faktor),
-  - `odcepitev` - meritev: podatki o občinah, od katerih se je občina odcepila (besedilo).
+2. Tabela **koncne.uvrstitve** prikazuje uvrstitev države na prvenstvih, katerih se je udeležila. Ker za svetovno prvenstvo, ki bo potekalo leta 2018 v Rusiji, seveda še nimamo podatkov o uvrstitvah, imamo pri uvrstitvni naveden NA, saj podatek, da se je država uvrstila na omenjeno prvenstvo še vedno potrebujemo.
+- `ekipa` - spremenljivka: ime ekipe (besedilo)
+- `leto` - spremenljivka: leto, v katerem je potekalo svetovno prvenstvo (celo število)
+- `uvrstitev` - meritev: uvrstitev države na prvenstvu
+```kable(head(koncne.uvrstitve))
+```
 
-**Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`.
-
-Spodnji graf prikazuje porazdelitev števila naselij v občinah.
-
-```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'}
-ggplot(obcine, aes(x = naselja)) + geom_histogram() +
-  ggtitle("Pogostost števila naselij") + xlab("Število naselij") + ylab("Število občin")
+3. V tabeli **tekme** pa so prikazani podatki o uspešnosti držav na odigranih tekmah na svetovnih prvenstvih.
+- `ekipa` - spremenljivka: ime ekipe (besedilo)
+- `izid` - spremenljivka: pove, ali se je odigrana tekma za opazovano državo končala z zmago, remijem ali porazom (besedilo)
+- `stevilo` - meritev: število odigranih tekem s prej omenjenim izidom
+```kable(head(tekme))
 ```
 
 ***
