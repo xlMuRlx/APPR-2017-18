@@ -1,29 +1,4 @@
 # 2. faza: Uvoz podatkov
-
-
-# Uvoz podatkov iz Wikipedije
-
-link1 <- "https://en.wikipedia.org/wiki/FIFA_World_Cup"
-stran1 <- html_session(link1) %>% read_html()
-top4 <- stran1 %>% html_nodes(xpath="//table[@class='wikitable sortable']") %>%
-  .[[2]] %>% html_table(dec = ",", fill = TRUE)
-for (i in 1:ncol(top4)) {
-  if (is.character(top4[[i]])) {
-    Encoding(top4[[i]]) <- "UTF-8"
-  }
-}
-colnames(top4) <- c("ekipa", "st_prvak", "st_druga","st_tretja",
-                    "st_cetrta","st_top4","st_top3", "st_top2")
-
-top4$ekipa <- gsub("[#^]", "", top4$ekipa)
-top4$st_top3 <- as.numeric(top4$st_top3)
-top4$st_top2 <- as.numeric(top4$st_top2)
-top4$st_prvak <- gsub("^&", NA, top4$st_prvak)
-top4$st_druga <- gsub("^&", NA, top4$st_druga)
-top4$st_tretja <- gsub("^&", NA, top4$st_tretja)
-top4$st_cetrta <- gsub("^&", NA, top4$st_cetrta)
-
-
   
 #  tabela$obcina <- gsub("Slovenskih", "Slov.", tabela$obcina)
 #  tabela$obcina[tabela$obcina == "Kanal ob Soči"] <- "Kanal"
@@ -38,18 +13,17 @@ top4$st_cetrta <- gsub("^&", NA, top4$st_cetrta)
 #}
 
 
-link2 <- "https://en.wikipedia.org/wiki/National_team_appearances_in_the_FIFA_World_Cup#Comprehensive_team_results_by_tournament"
-stran2 <- html_session(link2) %>% read_html()
-uvrstitve <- stran2 %>% html_nodes(xpath="//table[@class='wikitable']") %>%
+link <- "https://en.wikipedia.org/wiki/National_team_appearances_in_the_FIFA_World_Cup#Comprehensive_team_results_by_tournament"
+stran <- html_session(link) %>% read_html()
+uvrstitve <- stran %>% html_nodes(xpath="//table[@class='wikitable']") %>%
   .[[2]] %>% html_table(dec = ",", fill = TRUE)
 for (i in 1:ncol(uvrstitve)) {
   if (is.character(uvrstitve[[i]])) {
     Encoding(uvrstitve[[i]]) <- "UTF-8"
   }
 }
-stolpci <- c("ekipa", seq(1930, 1938, 4), seq(1950, 2018, 4),
-             "skupne_uvr", "proc_uspesnost")
-colnames(uvrstitve) <- stolpci
+colnames(uvrstitve) <- c("ekipa", seq(1930, 1938, 4), seq(1950, 2018, 4),
+                          "skupne_uvr", "proc_uspesnost")
 uvrstitve <- uvrstitve[-c(25, 53, 82), ]
 uvrstitve <- uvrstitve %>% separate(skupne_uvr, c("st_uvr", "st_kval"), "/")
 uvrstitve$st_uvr <- parse_integer(uvrstitve$st_uvr)
@@ -70,14 +44,28 @@ colnames(prvenstva) <- c("ekipa", "odigrane", "zmaga", "remi", "poraz", "st_dose
                          "st_prejeti", seq(1930, 1938, 4), seq(1950, 2014, 4))
 prvenstva <- prvenstva[-c(78, 79, 80), ]
 prvenstva$zmaga <- round(prvenstva$zmaga)
-prvenstva <- melt(prvenstva, "ekipa", "leto", "uvrstitev")
 
-ucinkovitost <- prvenstva[1:7]
+ucinkovitost <- prvenstva[c(1, 6, 7)]
+ucinkovitost <- melt(ucinkovitost, id = "ekipa", na.rm = TRUE)
+colnames(ucinkovitost) <- c("ekipa", "tip", "stevilo")
+ucinkovitost$tip <- gsub("st_dosezeni", "dosezeni", ucinkovitost$tip)
+ucinkovitost$tip <- gsub("st_prejeti", "prejeti", ucinkovitost$tip)
+ucinkovitost <- ucinkovitost %>% arrange(ekipa)
 
-prvenstva <- melt(prvenstva[c(1, 8:ncol(prvenstva))], id="ekipa")
-colnames(prvenstva) <- c("ekipa", "leto", "uvrstitev")
-prvenstva <- prvenstva %>% arrange(ekipa)
-prvenstva <- prvenstva %>% drop_na(uvrstitev)
+koncne.uvrstitve <- melt(prvenstva[, -c(2:7)], na.rm = TRUE,
+                         variable.name = "leto", value.name = "uvrstitev") %>%
+  mutate(leto = parse_number(leto))
+koncne.uvrstitve <- rbind(koncne.uvrstitve,
+                          data.frame(ekipa = uvrstitve[uvrstitve[,"2018"] == "q", "ekipa"] %>%
+                                       strapplyc("(^[^[]+)") %>% unlist(),
+                                     leto = 2018, uvrstitev = NA))
+koncne.uvrstitve <- koncne.uvrstitve %>% arrange(ekipa)
+
+tekme <- prvenstva[c(1, 3, 4, 5)]
+tekme <- melt(tekme, id = "ekipa", na.rm = TRUE)
+colnames(tekme) <- c("ekipa", "izid", "stevilo")
+tekme <- tekme %>% arrange(ekipa)
+
 
 #  uvozi.druzine <- function(obcine) {
 #  data <- read_csv2("podatki/druzine.csv", col_names = c("obcina", 1:4),
