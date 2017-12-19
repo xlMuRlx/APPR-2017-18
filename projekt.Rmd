@@ -45,7 +45,7 @@ kable(head(ucinkovitost))
 - `ekipa` - spremenljivka: ime ekipe (besedilo)
 - `leto` - spremenljivka: leto, v katerem je potekalo svetovno prvenstvo (celo število)
 - `uvrstitev` - meritev: uvrstitev države na prvenstvu
-```{r ucinkovitost, echo=FALSE, message=FALSE}
+```{r koncne.uvrstitve, echo=FALSE, message=FALSE}
 kable(head(koncne.uvrstitve))
 ```
 
@@ -54,7 +54,7 @@ kable(head(koncne.uvrstitve))
 - `ekipa` - spremenljivka: ime ekipe (besedilo)
 - `izid` - spremenljivka: pove, ali se je odigrana tekma za opazovano ekipo končala z zmago, remijem ali porazom (besedilo)
 - `stevilo` - meritev: število odigranih tekem s prej omenjenim izidom
-```{r ucinkovitost, echo=FALSE, message=FALSE}
+```{r tekme, echo=FALSE, message=FALSE}
 kable(head(tekme))
 ```
 
