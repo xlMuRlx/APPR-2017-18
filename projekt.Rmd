@@ -31,7 +31,7 @@ Za temo svojega projetka sem določil analizo svetovnih prvenstev v nogometu. Za
 source("uvoz/uvoz.r", encoding = "UTF-8")
 ```
 
-Prenesel sem podatke o uspešnosti držav na posameznih svetovnih prvenstvih ter njihovo učinkovitost iz uradne strani Mednarodne nogometne federacije (FIFA). Ker pa so bili podatki v pdf obliki, sem jih najprej pretvoril v excel datoteko. Nato sem podatke uvozil ter preuredil v obliko *tidy data*. Podobno sem storil tudi s podatki uvoženimi iz Wikipedije, pri katerih pa se je izkazalo, da potrebujem le en stolpec, ki sem ga tako dodal tabeli koncne.uvrstitve. Podatke imamo navedene v treh tabelah, ki so natančneje opisane spodaj. Na koncu opisa vsake tabele pa imamo podan še prednogled izgleda same tabele.
+Prenesel sem podatke o uspešnosti držav na posameznih svetovnih prvenstvih ter njihovo učinkovitost iz uradne strani Mednarodne nogometne federacije (FIFA). Ker pa so bili podatki v pdf obliki, sem jih najprej pretvoril v excel datoteko. Nato sem podatke uvozil ter preuredil v obliko *tidy data*. Podobno sem storil tudi s podatki uvoženimi iz Wikipedije, pri katerih pa se je izkazalo, da potrebujem le dva stolpca, od katerih sem prvega dodal tabeli koncne.uvrstitve, drugega, ki govori o številu nastopanj ekipe na kvalifikacijah, pa sem dal v svojo tabelo. Podatke imamo navedene v štirih tabelah, ki so natančneje opisane spodaj. Na koncu opisa vsake tabele pa imamo podan še prednogled izgleda same tabele.
 
 1. V tabeli **ucinkovitost** je prikazana učinkovitost držav na vseh svetovnih prvenstvih, na katera se je posamezna država uvrstila.
 - `ekipa` - spremenljivka: ime ekipe (besedilo)
@@ -56,6 +56,14 @@ kable(head(koncne.uvrstitve))
 - `stevilo` - meritev: število odigranih tekem s prej omenjenim izidom (celo število)
 ```{r tekme, echo=FALSE, message=FALSE}
 kable(head(tekme))
+```
+
+
+4. V tabeli **potegovanja** je prikazano število nastopob posamezne ekipe na kvalifikacijah za svetovna prvenstva, saj bomo te podatke potrebovali pri analizi.
+- `ekipa` - spremenljivka: ime ekipe (besedilo)
+- `st_nastopov` - meritev: število nastopov ekipe na kvalifikacijah (celo število)
+```{r potegovanja, echo=FALSE, message=FALSE}
+kable(head(potegovanja))
 ```
 
 ***

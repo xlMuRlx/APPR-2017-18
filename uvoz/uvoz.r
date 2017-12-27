@@ -20,6 +20,9 @@ uvrstitve$st_uvr <- parse_integer(uvrstitve$st_uvr)
 uvrstitve$st_kval <- parse_integer(uvrstitve$st_kval)
 uvrstitve$proc_uspesnost <- parse_number(uvrstitve$proc_uspesnost)
 
+potegovanja <- uvrstitve[c(1, length(uvrstitve)-1)]
+colnames(potegovanja) <- c("ekipa", "st_nastopov")
+
 
 # Uvoz podatkov iz datoteke Excel
 
