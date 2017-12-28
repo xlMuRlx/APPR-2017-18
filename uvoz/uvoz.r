@@ -20,9 +20,6 @@ uvrstitve$st_uvr <- parse_integer(uvrstitve$st_uvr)
 uvrstitve$st_kval <- parse_integer(uvrstitve$st_kval)
 uvrstitve$proc_uspesnost <- parse_number(uvrstitve$proc_uspesnost)
 
-potegovanja <- uvrstitve[c(1, length(uvrstitve)-1)]
-colnames(potegovanja) <- c("ekipa", "st_nastopov")
-
 
 # Uvoz podatkov iz datoteke Excel
 
@@ -37,6 +34,9 @@ colnames(prvenstva) <- c("ekipa", "odigrane", "zmaga", "remi", "poraz", "st_dose
                          "st_prejeti", seq(1930, 1938, 4), seq(1950, 2014, 4))
 prvenstva <- prvenstva[-c(78, 79, 80), ]
 prvenstva$zmaga <- round(prvenstva$zmaga)
+prvenstva <- prvenstva %>% add_row()
+prvenstva$ekipa[78] <- "Panama"
+prvenstva <- prvenstva %>% arrange(ekipa)
 
 ucinkovitost <- prvenstva[c(1, 6, 7)]
 ucinkovitost <- melt(ucinkovitost, id = "ekipa", na.rm = TRUE)
@@ -58,4 +58,15 @@ tekme <- prvenstva[c(1, 3, 4, 5)]
 tekme <- melt(tekme, id = "ekipa", na.rm = TRUE)
 colnames(tekme) <- c("ekipa", "izid", "stevilo")
 tekme <- tekme %>% arrange(ekipa)
+
+potegovanja <- uvrstitve[c(1, length(uvrstitve)-1)]
+colnames(potegovanja) <- c("ekipa", "st_nastopov")
+potegovanja$ekipa <- gsub("\\[([^)]*)\\]", "", potegovanja$ekipa)
+potegovanja$ekipa <- gsub("DR Congo", "Congo DR", potegovanja$ekipa)
+potegovanja$ekipa <- gsub("Ivory Coast", "Cote d Ivoire", potegovanja$ekipa)
+potegovanja$ekipa <- gsub("North Korea", "Korea DPR", potegovanja$ekipa)
+potegovanja$ekipa <- gsub("South Korea", "Korea Republic", potegovanja$ekipa)
+potegovanja <- potegovanja[-c(22), ]
+potegovanja <- potegovanja %>% arrange(ekipa)
+
 
