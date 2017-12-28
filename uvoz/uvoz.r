@@ -36,6 +36,12 @@ prvenstva <- prvenstva[-c(78, 79, 80), ]
 prvenstva$zmaga <- round(prvenstva$zmaga)
 prvenstva <- prvenstva %>% add_row()
 prvenstva$ekipa[78] <- "Panama"
+prvenstva$odigrane[78] <- 0
+prvenstva$zmaga[78] <- 0
+prvenstva$remi[78] <- 0
+prvenstva$poraz[78] <- 0
+prvenstva$st_dosezeni[78] <- 0
+prvenstva$st_prejeti[78] <- 0
 prvenstva <- prvenstva %>% arrange(ekipa)
 
 ucinkovitost <- prvenstva[c(1, 6, 7)]
