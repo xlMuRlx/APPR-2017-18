@@ -7,7 +7,6 @@ prva <- tekme %>% filter(izid == "zmaga")
 prva <- prva[-2]
 prva <- prva %>% arrange(stevilo)
 prva <- prva[c((nrow(prva)-19):nrow(prva)), ]
-prva <- prva %>% arrange(ekipa)
 
 druga <- data.frame(table(koncne.uvrstitve$ekipa))
 colnames(druga) <- c("ekipa", "st_udelezb")
@@ -43,8 +42,8 @@ graf.zmage <- graf.zmage + xlab("Država") + ylab("Število zmag") +
 
 graf.kvalificiranja <- ggplot(druga, aes(x = ekipa, y = proc_uspesnost)) + 
   geom_bar(stat="identity")
-graf.kvalificiranja <- graf.zmage + xlab("Država") + ylab("Procentualna uspešnost") + 
-  ggtitle("Procentualna uspešnost pri kvalificiranju 20 najuspešnejših držav")
+graf.kvalificiranja <- graf.kvalificiranja + xlab("Država") + 
+  ylab("Procentualna uspešnost") + ggtitle("Procentualna uspešnost pri kvalificiranju 20 najuspešnejših držav")
 
 graf.brazil <- ggplot(tretja, aes(x = leto, y = uvrstitev)) + geom_line(color = 'blue')
 graf.brazil <- graf.brazil + xlab("Leto") + ylab("Končna uvrstitev") + 
