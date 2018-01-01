@@ -67,6 +67,7 @@ koncne.uvrstitve <- rbind(koncne.uvrstitve,
                           data.frame(ekipa = uvrstitve[uvrstitve[,"2018"] == "q", "ekipa"] %>%
                                        strapplyc("(^[^[]+)") %>% unlist(),
                                      leto = 2018, uvrstitev = NA))
+koncne.uvrstitve$ekipa <- gsub("South Korea", "Korea Republic", koncne.uvrstitve$ekipa)
 koncne.uvrstitve <- koncne.uvrstitve %>% arrange(ekipa)
 
 tekme <- prvenstva[c(1, 3, 4, 5)]
