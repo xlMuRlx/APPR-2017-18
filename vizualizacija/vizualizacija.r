@@ -15,9 +15,13 @@ druga <- right_join(druga, potegovanja) %>% group_by(ekipa) %>%
 druga <- druga %>% arrange(proc_uspesnost)
 druga <- druga[c((nrow(druga)-19):nrow(druga)), ]
 
-tretja <- data.frame(koncne.uvrstitve %>% filter(ekipa == "Brazil"))
+tretja <- data.frame(koncne.uvrstitve %>% filter(ekipa == "Brazil")) %>% 
+  drop_na(uvrstitev)
+tretja <- tretja[c(1, 3)]
 
-cetrta <- data.frame(koncne.uvrstitve %>% filter(ekipa == "Germany"))
+cetrta <- data.frame(koncne.uvrstitve %>% filter(ekipa == "Germany")) %>%
+  drop_na(uvrstitev)
+cetrta <- cetrta[c(1, 3)]
 
 peta <- koncne.uvrstitve %>% group_by(ekipa) %>% 
   summarise(vsota = sum(uvrstitev, na.rm = TRUE))
