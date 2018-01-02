@@ -64,13 +64,11 @@ graf.uvrstitve <- graf.uvrstitve + xlab("Država") + ylab("Uvrstitev") +
   ggtitle("Povprečne uvrstitve najuspešnejših 20 držav") + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
-graf.goli <- ggplot(sedma, aes(x = reorder(ekipa, -stevilo), 
-                               y = stevilo)) + 
+graf.goli <- ggplot(inner_join(peta, sedma), aes(x = reorder(ekipa, povp_uvrstitev), y = stevilo)) + 
   geom_col(color = 'black', fill = 'blue')
 graf.goli <- graf.goli + xlab("Država") + ylab("Število") + 
   ggtitle("Število doseženih zadetkov najuspešnejših 20 držav") + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
-
 
 # Zemljevidi:
 
@@ -92,9 +90,15 @@ zemljevid$NAME_LONG <- gsub("Northern Republic of Ireland", "Northern Ireland",
 zemljevid$NAME_LONG <- gsub("Russian Federation", "Russia", zemljevid$NAME_LONG)
 
 
-graf.prvaki <- ggplot() + 
-  geom_polygon(data = left_join(zemljevid, sesta, by = c("NAME_LONG" = "ekipa")),
-               aes(x = long, y = lat, group = group, fill = st_naslovov)) +
+graf.prvaki <- ggplot(data = zemljevid %>% filter(CONTINENT %in% c("Europe", "South America"),
+                                                  NAME_LONG != "Russia") %>%
+                        left_join(sesta, by = c("NAME_LONG" = "ekipa"))) + 
+  geom_polygon(aes(x = long, y = lat, group = group, fill = st_naslovov), color = "black") +
+  geom_text(data = inner_join(zemljevid, sesta, by = c("NAME_LONG" = "ekipa")) %>%
+              group_by(NAME_LONG, CONTINENT) %>%
+              summarise(avg_long = mean(long), avg_lat = mean(lat)),
+            aes(x = avg_long, y = avg_lat, label = NAME_LONG), color = "red") +
+  facet_wrap(~ reorder(CONTINENT, -as.numeric(CONTINENT)), scales = "free") +
   ggtitle("Vse zmagovalke svetovnih prvenstev") + xlab("") + ylab("") +
   guides(fill = guide_colorbar(title = "Število naslovov"))
 
