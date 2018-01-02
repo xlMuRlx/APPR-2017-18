@@ -74,12 +74,9 @@ graf.goli <- graf.goli + xlab("Država") + ylab("Število") +
 zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_countries.zip",
                              "ne_110m_admin_0_countries") %>% pretvori.zemljevid()
 
-
-# Uvozimo zemljevid.
-# zemljevid <- uvozi.zemljevid("http://baza.fmf.uni-lj.si/OB.zip",
-#                              "OB/OB", encoding = "Windows-1250")
-# levels(zemljevid$OB_UIME) <- levels(zemljevid$OB_UIME) %>%
-#   { gsub("Slovenskih", "Slov.", .) } %>% { gsub("-", " - ", .) }
-# zemljevid$OB_UIME <- factor(zemljevid$OB_UIME, levels = levels(obcine$obcina))
-# zemljevid <- pretvori.zemljevid(zemljevid)
+graf.prvaki <- ggplot() + 
+  geom_polygon(data = left_join(zemljevid, sesta, by = c("SOVEREIGNT" = "ekipa")),
+               aes(x = long, y = lat, group = group, fill = st_naslovov)) +
+  ggtitle("Vse zmagovalke svetovnih prvenstev") + xlab("") + ylab("") +
+  guides(fill = guide_colorbar(title = "Število naslovov")) + borders('world')
 
