@@ -78,7 +78,8 @@ tekme <- tekme %>% arrange(ekipa)
 potegovanja <- uvrstitve[c(1, length(uvrstitve)-1)]
 colnames(potegovanja) <- c("ekipa", "st_nastopov")
 potegovanja$ekipa <- gsub("\\[([^)]*)\\]", "", potegovanja$ekipa)
-potegovanja$ekipa <- gsub("Bosnia and Herzegovina", "Bosnia & Herzegovina", potegovanja$ekipa)
+potegovanja$ekipa <- gsub("Bosnia and Herzegovina", "Bosnia & Herzegovina",
+                          potegovanja$ekipa)
 potegovanja$ekipa <- gsub("DR Congo", "Congo DR", potegovanja$ekipa)
 potegovanja$ekipa <- gsub("Ivory Coast", "Cote d Ivoire", potegovanja$ekipa)
 potegovanja$ekipa <- gsub("North Korea", "Korea DPR", potegovanja$ekipa)

@@ -39,16 +39,12 @@ sedma <- sedma %>% filter(ekipa %in% peta$ekipa)
 
 
 
+
 # Grafi:
 
 graf.zmage <- ggplot(prva, aes(x = ekipa, y = stevilo)) + geom_bar(stat="identity")
 graf.zmage <- graf.zmage + xlab("Država") + ylab("Število") + 
   ggtitle("Število zmag 20 ekip z največ zmagami")
-
-graf.kvalificiranja <- ggplot(druga, aes(x = ekipa, y = proc_uspesnost)) + 
-  geom_bar(stat="identity")
-graf.kvalificiranja <- graf.kvalificiranja + xlab("Država") + ylab("Uspešnost") + 
-  ggtitle("Procentualna uspešnost pri kvalificiranju 20 najuspešnejših držav")
 
 graf.brazil <- ggplot(tretja, aes(x = leto, y = uvrstitev)) + geom_line(color = 'blue')
 graf.brazil <- graf.brazil + xlab("Leto") + ylab("Uvrstitev") + 
@@ -66,17 +62,35 @@ graf.uvrstitve <- graf.uvrstitve + xlab("Država") + ylab("Uvrstitev") +
 graf.goli <- ggplot(sedma, aes(x = ekipa, y = stevilo)) + 
   geom_bar(stat = "identity", color = 'black', fill = 'blue')
 graf.goli <- graf.goli + xlab("Država") + ylab("Število") + 
-  ggtitle("Število danih zadetkov najuspešnejših 20 držav")
+  ggtitle("Število doseženih zadetkov najuspešnejših 20 držav")
 
 
 # Zemljevidi:
 
 zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/110m/cultural/ne_110m_admin_0_countries.zip",
                              "ne_110m_admin_0_countries") %>% pretvori.zemljevid()
+zemljevid$SOVEREIGNT <- gsub("United States of America", "USA", zemljevid$SOVEREIGNT)
+zemljevid$SOVEREIGNT <- gsub("North Korea", "Korea DPR", zemljevid$SOVEREIGNT)
+zemljevid$SOVEREIGNT <- gsub("South Korea", "Korea Republic", zemljevid$SOVEREIGNT)
+zemljevid$SOVEREIGNT <- gsub("Bosnia and Herzegovina", "Bosnia & Herzegovina",
+                             zemljevid$SOVEREIGNT)
+zemljevid$SOVEREIGNT <- gsub("Ivory Coast", "Cote d Ivoire", zemljevid$SOVEREIGNT)
+zemljevid$SOVEREIGNT <- gsub("Democratic Republic of the Congo", "Congo DR", 
+                             zemljevid$SOVEREIGNT)
+zemljevid$SOVEREIGNT <- gsub("China", "China PR", zemljevid$SOVEREIGNT)
+zemljevid$SOVEREIGNT <- gsub("Ireland", "Republic of Ireland", zemljevid$SOVEREIGNT)
+zemljevid$SOVEREIGNT <- gsub("United Kingdom", "England", zemljevid$SOVEREIGNT)
+# Zadnji korak storimo za približno ujemanje zemljevida in podatkov
 
 graf.prvaki <- ggplot() + 
   geom_polygon(data = left_join(zemljevid, sesta, by = c("SOVEREIGNT" = "ekipa")),
                aes(x = long, y = lat, group = group, fill = st_naslovov)) +
   ggtitle("Vse zmagovalke svetovnih prvenstev") + xlab("") + ylab("") +
-  guides(fill = guide_colorbar(title = "Število naslovov")) + borders('world')
+  guides(fill = guide_colorbar(title = "Število naslovov"))
+
+graf.kvalificiranja <- ggplot() + 
+  geom_polygon(data = left_join(zemljevid, druga, by = c("SOVEREIGNT" = "ekipa")),
+               aes(x = long, y = lat, group = group, fill = proc_uspesnost)) +
+  ggtitle("Procentualna uspešnost pri kvalificiranju") + xlab("") + ylab("") +
+  guides(fill = guide_colorbar(title = "Procentualna uspešnost"))
 
