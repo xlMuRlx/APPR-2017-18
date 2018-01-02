@@ -33,30 +33,40 @@ sesta <- sesta[1]
 sesta <- as.data.frame(table(sesta), dnn = "ekipa")
 colnames(sesta) <- c("ekipa", "st_naslovov")
 
+sedma <- ucinkovitost %>% filter(tip == "dosezeni")
+sedma <- sedma[c(1, 3)] %>% arrange(stevilo)
+sedma <- sedma %>% filter(ekipa %in% peta$ekipa)
+
+
 
 # Grafi:
 
 graf.zmage <- ggplot(prva, aes(x = ekipa, y = stevilo)) + geom_bar(stat="identity")
-graf.zmage <- graf.zmage + xlab("Država") + ylab("Število zmag") + 
+graf.zmage <- graf.zmage + xlab("Država") + ylab("Število") + 
   ggtitle("Število zmag 20 ekip z največ zmagami")
 
 graf.kvalificiranja <- ggplot(druga, aes(x = ekipa, y = proc_uspesnost)) + 
   geom_bar(stat="identity")
-graf.kvalificiranja <- graf.kvalificiranja + xlab("Država") + 
-  ylab("Procentualna uspešnost") + ggtitle("Procentualna uspešnost pri kvalificiranju 20 najuspešnejših držav")
+graf.kvalificiranja <- graf.kvalificiranja + xlab("Država") + ylab("Uspešnost") + 
+  ggtitle("Procentualna uspešnost pri kvalificiranju 20 najuspešnejših držav")
 
 graf.brazil <- ggplot(tretja, aes(x = leto, y = uvrstitev)) + geom_line(color = 'blue')
-graf.brazil <- graf.brazil + xlab("Leto") + ylab("Končna uvrstitev") + 
+graf.brazil <- graf.brazil + xlab("Leto") + ylab("Uvrstitev") + 
   ggtitle("Končne uvrstitve Brazilije na svetovnih prvenstvih")
 
 graf.nemcija <- ggplot(cetrta, aes(x = leto, y = uvrstitev)) + geom_line(color = 'red')
-graf.nemcija <- graf.nemcija + xlab("Leto") + ylab("Končna uvrstitev") +
+graf.nemcija <- graf.nemcija + xlab("Leto") + ylab("Uvrstitev") +
   ggtitle("Končne uvrstitve Nemčije na svetovnih prvenstvih")
 
 graf.uvrstitve <- ggplot(peta, aes(x = ekipa, y = povp_uvrstitev)) + 
   geom_bar(stat = "identity", color = 'black', fill = 'blue')
-graf.uvrstitve <- graf.uvrstitve + xlab("Država") + ylab("Povprečna uvrstitev") + 
+graf.uvrstitve <- graf.uvrstitve + xlab("Država") + ylab("Uvrstitev") + 
   ggtitle("Povprečne uvrstitve najuspešnejših 20 držav")
+
+graf.goli <- ggplot(sedma, aes(x = ekipa, y = stevilo)) + 
+  geom_bar(stat = "identity", color = 'black', fill = 'blue')
+graf.goli <- graf.goli + xlab("Država") + ylab("Število") + 
+  ggtitle("Število danih zadetkov najuspešnejših 20 držav")
 
 
 # Zemljevidi:
