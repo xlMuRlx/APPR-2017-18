@@ -78,8 +78,6 @@ source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
 
 Pri vizualizaciji sem najprej sestavil nekaj pomožnih tabel, s katerimi je bilo željene grafe lažje narisati. Tako sem prišel do sedem novih tabel, ki so podrobneje, skupaj z dobljenimi grafi, opisane v spodnjih odstavkih.
 
-Omeniti moram tudi, da sem pri risanju zemljevidov storil krivico državam Wales, Severna Irska in Škotska, saj mi na žalost ni uspelo najti zemljevida, ki bi razdelil Združeno Kraljestvo na omenjene tri države ter Anglijo, zato sem se odločil, da bom Anglijo zaradi najopaznejših dosežkov teh držav kar enačil z Združenim Kraljestvom.
-
 ## Zmage
 Za prikaz prvega grafa `graf.zmage`, ki prikazuje 20 ekip, ki so dosegle največ zmag na svetovnih prvenstvih, sem sestavil pomožno tabelo `prva`. Ta ima dva stolpca; v prvem je podana država, v drugem pa število zmag, ki jih je država dosegla. S pomočjo te tabele sem narisal graf, iz katerega je mogoče razbrati, katere reprezentance so dosegle največ zmag na svetovnih prvenstvih ter koliko.
 ```{r prva, echo=FALSE, message=FALSE}
