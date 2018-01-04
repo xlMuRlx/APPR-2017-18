@@ -16,11 +16,11 @@ druga$ekipa <- gsub("Northern  Ireland", "Northern Ireland", druga$ekipa)
 
 tretja <- data.frame(koncne.uvrstitve %>% filter(ekipa == "Brazil")) %>% 
   drop_na(uvrstitev)
-tretja <- tretja[c(1, 3)]
+tretja <- tretja[c(2, 3)]
 
 cetrta <- data.frame(koncne.uvrstitve %>% filter(ekipa == "Germany")) %>%
   drop_na(uvrstitev)
-cetrta <- cetrta[c(1, 3)]
+cetrta <- cetrta[c(2, 3)]
 
 peta <- koncne.uvrstitve %>% group_by(ekipa) %>% 
   summarise(vsota = sum(uvrstitev, na.rm = TRUE))
