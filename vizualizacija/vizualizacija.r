@@ -1,6 +1,7 @@
 # 3. faza: Vizualizacija podatkov
 
 
+
 # Tabele:
 
 prva <- tekme %>% filter(izid == "zmaga")
@@ -69,6 +70,8 @@ graf.goli <- ggplot(inner_join(peta, sedma), aes(x = reorder(ekipa, povp_uvrstit
 graf.goli <- graf.goli + xlab("Država") + ylab("Število") + 
   ggtitle("Število doseženih zadetkov najuspešnejših 20 držav") + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+
+
 
 # Zemljevidi:
 
