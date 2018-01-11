@@ -1,6 +1,7 @@
 # 3. faza: Vizualizacija podatkov
 
 
+
 # Tabele:
 
 prva <- tekme %>% filter(izid == "zmaga")
@@ -16,11 +17,11 @@ druga$ekipa <- gsub("Northern  Ireland", "Northern Ireland", druga$ekipa)
 
 tretja <- data.frame(koncne.uvrstitve %>% filter(ekipa == "Brazil")) %>% 
   drop_na(uvrstitev)
-tretja <- tretja[c(1, 3)]
+tretja <- tretja[c(2, 3)]
 
 cetrta <- data.frame(koncne.uvrstitve %>% filter(ekipa == "Germany")) %>%
   drop_na(uvrstitev)
-cetrta <- cetrta[c(1, 3)]
+cetrta <- cetrta[c(2, 3)]
 
 peta <- koncne.uvrstitve %>% group_by(ekipa) %>% 
   summarise(vsota = sum(uvrstitev, na.rm = TRUE))
@@ -69,6 +70,8 @@ graf.goli <- ggplot(inner_join(peta, sedma), aes(x = reorder(ekipa, povp_uvrstit
 graf.goli <- graf.goli + xlab("Država") + ylab("Število") + 
   ggtitle("Število doseženih zadetkov najuspešnejših 20 držav") + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+
+
 
 # Zemljevidi:
 
