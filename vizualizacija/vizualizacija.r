@@ -67,7 +67,7 @@ graf.uvrstitve <- graf.uvrstitve + xlab("Država") + ylab("Uvrstitev") +
 
 graf.goli <- ggplot(inner_join(peta, sedma), aes(x = reorder(ekipa, povp_uvrstitev), y = stevilo)) + 
   geom_col(color = 'black', fill = 'blue')
-graf.goli <- graf.goli + xlab("Država") + ylab("Število") + 
+graf.goli <- graf.goli + xlab("Država") + ylab("Zadetki") + 
   ggtitle("Število doseženih zadetkov najuspešnejših 20 držav") + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
