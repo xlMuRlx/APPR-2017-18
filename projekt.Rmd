@@ -1,5 +1,5 @@
 ---
-title: "Poročilo pri predmetu Analiza podatkov s programom R"
+title: "Analiza svetovnih prvenstev v nogometu"
 author: "Andraž Mur"
 output:
   html_document: default
@@ -125,3 +125,21 @@ Kot sem obljubil že pri zasnovi samega projekta, pa sem s pomočjo zadnje tabel
 ```{r zemljevid, echo=FALSE, fig.align='center'}
 graf.prvaki
 ```
+
+***
+  
+# Napredna analiza podatkov
+  
+```{r analiza, echo=FALSE, message=FALSE}
+source("analiza/analiza.r", encoding = "UTF-8")
+```
+
+Pri napredni analizi sem se odločil, da si bom naprej ogledal povezavo med številom zmag na svetovnih prvenstvih ter povprečno uvrstitvijo. Najprej sem sestavil pomožno tabelo `skupine`, v kateri sem za vse udeleženke svetovnih prvenstev izpisal število zmag ter povprečno uvrstitev. S pomočjo te tabele sem države razvrstil v 4 skupine glede na število doseženih zmag, nato pa sem z omenjeno tabelo, ter še eno pomožno tabelo `razvrstitev`, izrisal spodnji graf. Ta prikazuje povprečno uvrstitev posamezne države na svetovnih prvenstvih, pri čemer je barva za državo določena glede na skupino, v katero spada po številu doseženih zmag.
+
+```{r skupine, echo=FALSE, message=FALSE, fig.height = 5, fig.width = 10}
+graf.povezava
+```
+
+Razvrstitev držav po skupinah se je izkazala za kar pričakovano. Tako sta izstopajoči državi Nemčija in Brazilija s svoji skupini, v drugi skupini so druge nogometne velesile, v ostalih dveh pa so porazdeljene manj uspešne države. Glede na uvrstitve pa lahko opazimo, da znova pride do nekaterih odstopanj. Tako imajo na primer Wales, Turčija in Senegal eno boljših povprečnih uvrstitev, čeprav spadajo v skupino z najmanj zmagami. Ti rezultati se skladaja tudi s podatki, do katerih smo prišli pri analizi uvrstitev in zadetkov, kar potrjuje da do odstopanj prihaja predvsem pri državah, ki so presenetile na nekem posameznem svetovnem prvenstvu. Kljub temu pa opazimo, da sta število zmag ter povprečna uvrstitev med seboj zelo povezani.
+
+***

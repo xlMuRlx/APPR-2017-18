@@ -30,7 +30,6 @@ peta <- left_join(peta, as.data.frame
                          dnn = c("ekipa"))))
 peta <- peta %>% group_by(ekipa) %>% summarise(povp_uvrstitev = round(vsota / Freq, 1))
 peta <- peta %>% arrange(povp_uvrstitev)
-peta <- peta[c(1:20), ]
 
 sesta <- koncne.uvrstitve %>% filter(uvrstitev == 1)
 sesta <- sesta[1]
@@ -47,7 +46,7 @@ sedma <- sedma %>% filter(ekipa %in% peta$ekipa)
 # Grafi:
 
 graf.zmage <- ggplot(prva, aes(x = reorder(ekipa, -stevilo), y = stevilo)) + geom_col() +
-  xlab("Država") + ylab("Število") + ggtitle("Število zmag 20 ekip z največ zmagami") +
+  xlab("Država") + ylab("Število zmag") + ggtitle("Število zmag 20 ekip z največ zmagami") +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
 graf.brazil <- ggplot(tretja, aes(x = leto, y = uvrstitev)) + geom_line(color = 'blue')
@@ -58,14 +57,15 @@ graf.nemcija <- ggplot(cetrta, aes(x = leto, y = uvrstitev)) + geom_line(color =
 graf.nemcija <- graf.nemcija + xlab("Leto") + ylab("Uvrstitev") +
   ggtitle("Končne uvrstitve Nemčije na svetovnih prvenstvih")
 
-graf.uvrstitve <- ggplot(peta, aes(x = reorder(ekipa, povp_uvrstitev),
+graf.uvrstitve <- ggplot(peta[c(1:20), ], aes(x = reorder(ekipa, povp_uvrstitev),
                                    y = povp_uvrstitev)) + geom_col(color = 'black', 
                                                                    fill = 'blue')
 graf.uvrstitve <- graf.uvrstitve + xlab("Država") + ylab("Uvrstitev") + 
   ggtitle("Povprečne uvrstitve najuspešnejših 20 držav") + 
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 
-graf.goli <- ggplot(inner_join(peta, sedma), aes(x = reorder(ekipa, povp_uvrstitev), y = stevilo)) + 
+graf.goli <- ggplot(inner_join(peta[c(1:20), ], sedma), 
+                    aes(x = reorder(ekipa, povp_uvrstitev), y = stevilo)) + 
   geom_col(color = 'black', fill = 'blue')
 graf.goli <- graf.goli + xlab("Država") + ylab("Zadetki") + 
   ggtitle("Število doseženih zadetkov najuspešnejših 20 držav") + 
