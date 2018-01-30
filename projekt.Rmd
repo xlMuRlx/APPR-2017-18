@@ -19,7 +19,7 @@ output:
 source("lib/libraries.r", encoding = "UTF-8")
 ```
 
-# Izbira teme
+# 1. Izbira teme
 
 Za temo svojega projetka sem določil analizo svetovnih prvenstev v nogometu. Za to tematiko sem se odločil, ker je nogomet moj najljubši šport, še posebej rad pa spremljam nogometna svetovna prvenstva. Pri projetku bom opazoval uspešnost držav v kvalifikacijah za ta dogodek, uspešnost držav na samih prvenstvih ter njihovo učinkovitost. Moj cilj je poiskati najuspešnejše države, ki so na prvenstvih nastopale skozi zgodovino, ter države, ki so bile glede na svoje odigrane tekme na prvenstvih najučinkovitejše.
 
@@ -27,7 +27,7 @@ Za temo svojega projetka sem določil analizo svetovnih prvenstev v nogometu. Za
 
 ***
 
-# Obdelava, uvoz in čiščenje podatkov
+# 2. Obdelava, uvoz in čiščenje podatkov
 
 ```{r uvoz, echo=FALSE, message=FALSE}
 source("uvoz/uvoz.r", encoding = "UTF-8")
@@ -76,7 +76,7 @@ kable(head(potegovanja))
 
 ***
 
-# Analiza in vizualizacija podatkov
+# 3. Analiza in vizualizacija podatkov
 
 ```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE}
 source("vizualizacija/vizualizacija.r", encoding = "UTF-8")
@@ -128,12 +128,13 @@ graf.prvaki
 
 ***
   
-# Napredna analiza podatkov
+# 4. Napredna analiza podatkov
   
 ```{r analiza, echo=FALSE, message=FALSE}
 source("analiza/analiza.r", encoding = "UTF-8")
 ```
 
+## Zmage in povprečna uvrstitev
 Pri napredni analizi sem se odločil, da si bom naprej ogledal povezavo med številom zmag na svetovnih prvenstvih ter povprečno uvrstitvijo. Najprej sem sestavil pomožno tabelo `skupine`, v kateri sem za vse udeleženke svetovnih prvenstev izpisal število zmag ter povprečno uvrstitev. S pomočjo te tabele sem države razvrstil v 4 skupine glede na število doseženih zmag, nato pa sem z omenjeno tabelo, ter še eno pomožno tabelo `razvrstitev`, izrisal spodnji graf. Ta prikazuje povprečno uvrstitev posamezne države na svetovnih prvenstvih, pri čemer je barva za državo določena glede na skupino, v katero spada po številu doseženih zmag.
 
 ```{r skupine, echo=FALSE, message=FALSE, fig.height = 5, fig.width = 10}
@@ -141,5 +142,25 @@ graf.povezava
 ```
 
 Razvrstitev držav po skupinah se je izkazala za kar pričakovano. Tako sta izstopajoči državi Nemčija in Brazilija s svoji skupini, v drugi skupini so druge nogometne velesile, v ostalih dveh pa so porazdeljene manj uspešne države. Glede na uvrstitve pa lahko opazimo, da znova pride do nekaterih odstopanj. Tako imajo na primer Wales, Turčija in Senegal eno boljših povprečnih uvrstitev, čeprav spadajo v skupino z najmanj zmagami. Ti rezultati se skladaja tudi s podatki, do katerih smo prišli pri analizi uvrstitev in zadetkov, kar potrjuje da do odstopanj prihaja predvsem pri državah, ki so presenetile na nekem posameznem svetovnem prvenstvu. Kljub temu pa opazimo, da sta število zmag ter povprečna uvrstitev med seboj zelo povezani.
+
+
+## Statistika prihajajočih prvenstev
+Poleg zgornje analize, pa sem se odločil, da bom s pomočjo napredne analize poizkusil čim bolje napovedati nekaj statistike za naslednja tri svetovna prvenstva, ki bodo potekala leta 2018 v Rusiji, leta 2022 v Katarju ter leta 2026, za katerega pa lokacija še ni znana. Vse napovedi temeljijo na statistiki dosedanjih svetovnih prvenstev, zato je zelo mogoče, da se bodo vse napovedi izkazale za napačne, o čemer pa več v odstavku **zanimivost**.
+
+```{r napoved, echo=FALSE, message=FALSE}
+graf.porocilo
+```
+
+Zgornji graf je primer pomožnega grafa, s katerimi sem napovedoval statistiko za svetovna prvenstva v prihodnosti, s tem da sem pri zgornjem grafu še dodal tri točke, ki so sklep napovedi. S takšnimi grafi, ki so odraz statistike preteklih svetovnih prvenstev, sem želel napovedati število zadetkov, povprečno število zadetkov na tekmo in udeležbo na naslednjih prvenstvih. In sicer sem do napovedti prišel tako, da sem podatke aproksimiral s premico, ki se jim najbolj prilega, ter z njeno pomočjo pridobil podatke za prihodnost. Natančneje, z napovedmi sem prišel do naslednje tabele:
+
+```{r statistika, echo=FALSE, message=FALSE, fig.height = 2, fig.width = 3}
+kable(napoved)
+```
+
+Kot je iz tabele razvidno, naj bi število zadetkov na celotnem prvenstvu počasi naraščalo, povprečno število zadetkov doseženih na tekmo padalo, udeležba pa naj bi se počasi povečevala.
+
+
+**Zanimivost**: Glede na pridobljene podatke takoj ugotovimo, da se število vseh doseženih zadetkov ter število zadetkov na tekmo ne sklada, če je število tekem konstatno. Iz tega bi predpostavili, da se bo na prihajajočih prvenstvih moralo odigrati več tekem kot na prejšnjih, kar pa bi bilo mogoče le ob spremembi Fifinih pravil. V realnosti pa se izkaže, da je ta napoved pravzaprav pravilna, saj je 10. januarja 2017 FIFA sprejela odlog, da se bo svetovnega prvenstva leta 2026 udeležilo 48 in ne več 32 držav. To se bo seveda odražalo v večjem številu odigranih tekem, zaradi česar bo najverjetneje naraslo tudi število vseh doseženih zadetkov, za povprečno število zadetkov pa to niti ni nujno. Poleg tega se bo zaradi te odločitve Fife najbrž za napačno izkazala tudi moja napoved o udeležbi, saj se bo ob večjem številu tekem število obiskovalcev povečalo bolj sunkovito kot v preteklosti, česar pa seveda le z obravnavo preteklih podatkov nisem upošteval.
+
 
 ***
