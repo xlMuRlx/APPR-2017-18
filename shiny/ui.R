@@ -23,21 +23,3 @@ fluidPage(
   fluidRow(column(10, verbatimTextOutput("value")))
   
 )
-
-
-
-#shinyUI(fluidPage(
-# 
-#  titlePanel("Slovenske občine"),
-#  
-#  tabsetPanel(
-#      tabPanel("Velikost družine",
-#               DT::dataTableOutput("druzine")),
-#      
-#      tabPanel("Število naselij",
-#               sidebarPanel(
-#                  uiOutput("pokrajine")
-#                ),
-#               mainPanel(plotOutput("naselja")))
-#    )
-#))

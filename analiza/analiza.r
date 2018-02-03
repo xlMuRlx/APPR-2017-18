@@ -59,10 +59,11 @@ graf.porocilo <- ggplot(tabela.graf, aes(x = leto, y = st_golov)) +
   geom_smooth(method = 'lm', color = "red")
 
 
-
-
 colnames(napoved) <- c("Leto", "Število zadetkov", 
                        "Povprečno število zadetkov na tekmo", "Udeležba")
+
+
+# Definirajmo še pomožno tabelo za shiny
 
 pom_skupine <- aggregate(uvrstitev ~ ekipa, drop_na(koncne.uvrstitve), min)
 pom_skupine <- merge(pom_skupine, drop_na(koncne.uvrstitve))

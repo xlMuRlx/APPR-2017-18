@@ -87,26 +87,28 @@ Pri vizualizaciji sem najprej sestavil nekaj pomožnih tabel, s katerimi je bilo
 ## Zmage
 Za prikaz prvega grafa `graf.zmage`, ki prikazuje 20 ekip, katere so dosegle največ zmag na svetovnih prvenstvih, sem sestavil pomožno tabelo `prva`. Ta ima dva stolpca; v prvem je podana država, v drugem pa število zmag, ki jih je država dosegla. S pomočjo te tabele sem narisal graf, iz katerega je mogoče razbrati, katere reprezentance so dosegle največ zmag na svetovnih prvenstvih ter koliko.
 
-```{r prva, echo=FALSE, message=FALSE}
+```{r prva, echo=FALSE, message=FALSE, fig.align='center'}
 graf.zmage
 ```
 
 ## Uvrstitve in zadetki
 Druga dva grafa sem narisal s pomočjo tabel `peta` in `sedma`. Obe imata po 20 vrstic, v katerih so prikazane države, ki imajo na svetovnih prvenstvih najboljšo povprečno uvrstitev. Pri prvi je naslednji stolpec namenjen podajanju tega števila, torej povprečne uvrstitve, pri drugi pa prikazuje število doseženih zadetkov na zaključnih turnirjih. Najprej sem namreč želel narisati le graf najuspešnejših držav glede na uvrstitve, vendar sem opazil, da so na tem seznamu tudi nekatere nepričakovane države, zato sem dodal še graf, ki prikazuje število zadetkov. Skupaj iz obeh grafov torej lahko razberemo katere države so ohranjale svojo kvaliteto skozi leta ter katere so presenetile na enem od svetovnih prvenstev.
 
-```{r peta, echo=FALSE, message=FALSE}
+```{r peta, echo=FALSE, message=FALSE, fig.align='center'}
 graf.uvrstitve
 graf.goli
 ```
 
 ## Nemčija in Brazilija
 
+<div style="width:700px; height=400px">
 ![](http://www.hessetrindade.com.br/ingles/wpimages/wp9c02e8cb_05_06.jpg)
+</div>
 
 
 Iz dosedaj prikazanih grafov lahko hitro opazimo, da sta najuspešnejši državi na svetovnih prvenstvih Brazilija in Nemčija. Prav zaradi tega sem se odločil, da o teh dveh, s pomočjo tabel `tretja` in `cetrta`, narišem grafa, ki prikazujeta gibanje doseženega končnega mesta Nemčije in Brazilije na svetovnih prvenstvih. Dodaten razlog, da sem se odločil ravno za ti dve državi je tudi ta, da sta se udeležili največ prvenstev, zato se tak graf zdi smieln.
 
-```{r tretja, echo=FALSE, message=FALSE}
+```{r tretja, echo=FALSE, message=FALSE, fig.align='center'}
 graf.brazil
 graf.nemcija
 ```
@@ -126,18 +128,27 @@ Kot sem obljubil že pri zasnovi samega projekta, pa sem s pomočjo zadnje tabel
 graf.prvaki
 ```
 
-***
-  
-# 4. Napredna analiza podatkov
-  
+## Najboljše uvrstitve držav
+
 ```{r analiza, echo=FALSE, message=FALSE}
 source("analiza/analiza.r", encoding = "UTF-8")
 ```
 
+Poleg vseh zgoraj opisanih analiz, sem se dodatno odločil še, da bom dodal spustni seznam, pri katerem lahko uporabnik izbere eno izmed dosedanjih udeleženk svetovnih prvenstev, program pa mu izpiše njeno najboljšo uvrstitev ter prvenstvo, na katerem jo je nazadnje doseglo. Za zadnji del, torej da program izpiše le prvenstvo, na katerem je izbrana država nazadnje dosegla svojo najbolšo uvrstitev, sem se odločil zaradi lažje sestave seznama , po katerem se podatki berejo ter posledično lažje zasnove programa.
+
+```{r shiny, echo = FALSE}
+shinyAppDir("shiny", options=list(width="100%", height=220))
+```  
+
+
+***
+  
+# 4. Napredna analiza podatkov
+
 ## Zmage in povprečna uvrstitev
 Pri napredni analizi sem se odločil, da si bom naprej ogledal povezavo med številom zmag na svetovnih prvenstvih ter povprečno uvrstitvijo. Najprej sem sestavil pomožno tabelo `skupine`, v kateri sem za vse udeleženke svetovnih prvenstev izpisal število zmag ter povprečno uvrstitev. S pomočjo te tabele sem države razvrstil v 4 skupine glede na število doseženih zmag, nato pa sem z omenjeno tabelo, ter še eno pomožno tabelo `razvrstitev`, izrisal spodnji graf. Ta prikazuje povprečno uvrstitev posamezne države na svetovnih prvenstvih, pri čemer je barva za državo določena glede na skupino, v katero spada po številu doseženih zmag.
 
-```{r skupine, echo=FALSE, message=FALSE, fig.height = 5, fig.width = 10}
+```{r skupine, echo=FALSE, message=FALSE, fig.height = 5, fig.width = 10, fig.align='center'}
 graf.povezava
 ```
 
@@ -147,7 +158,7 @@ Razvrstitev držav po skupinah se je izkazala za kar pričakovano. Tako sta izst
 ## Statistika prihajajočih prvenstev
 Poleg zgornje analize, pa sem se odločil, da bom s pomočjo napredne analize poizkusil čim bolje napovedati nekaj statistike za naslednja tri svetovna prvenstva, ki bodo potekala leta 2018 v Rusiji, leta 2022 v Katarju ter leta 2026, za katerega pa lokacija še ni znana. Vse napovedi temeljijo na statistiki dosedanjih svetovnih prvenstev, zato je zelo mogoče, da se bodo vse napovedi izkazale za napačne, o čemer pa več v odstavku **zanimivost**.
 
-```{r napoved, echo=FALSE, message=FALSE}
+```{r napoved, echo=FALSE, message=FALSE, fig.align='center'}
 graf.porocilo
 ```
 
@@ -159,11 +170,15 @@ kable(napoved)
 
 Kot je iz tabele razvidno, naj bi število zadetkov na celotnem prvenstvu počasi naraščalo, povprečno število zadetkov doseženih na tekmo padalo, udeležba pa naj bi se počasi povečevala.
 
+\newline \newline
+
+<center>
+<div style="width:500px; height=400px">
+![](https://images.beinsports.com/KOuU_fU-mi2pJeTBdwTWu6sYRY0=/full-fit-in/1000x0/544091-FIFA-Fans.jpg)
+</div>
+# {.centered}
+
+\newline \newline
 
 **Zanimivost**: Glede na pridobljene podatke takoj ugotovimo, da se število vseh doseženih zadetkov ter število zadetkov na tekmo ne sklada, če je število tekem konstatno. Iz tega bi predpostavili, da se bo na prihajajočih prvenstvih moralo odigrati več tekem kot na prejšnjih, kar pa bi bilo mogoče le ob spremembi Fifinih pravil. V realnosti pa se izkaže, da je ta napoved pravzaprav pravilna, saj je 10. januarja 2017 FIFA sprejela odlog, da se bo svetovnega prvenstva leta 2026 udeležilo 48 in ne več 32 držav. To se bo seveda odražalo v večjem številu odigranih tekem, zaradi česar bo najverjetneje naraslo tudi število vseh doseženih zadetkov, za povprečno število zadetkov pa to niti ni nujno. Poleg tega se bo zaradi te odločitve Fife najbrž za napačno izkazala tudi moja napoved o udeležbi, saj se bo ob večjem številu tekem število obiskovalcev povečalo bolj sunkovito kot v preteklosti, česar pa seveda le z obravnavo preteklih podatkov nisem upošteval.
 
-
-  
-```{r shiny, echo = FALSE}
-shinyAppDir("shiny", options=list(width="100%", height=600))
-```
