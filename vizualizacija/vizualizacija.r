@@ -111,3 +111,10 @@ graf.kvalificiranja <- ggplot() +
   ggtitle("Procentualna uspešnost pri kvalificiranju") + xlab("") + ylab("") +
   guides(fill = guide_colorbar(title = "Procentualna uspešnost"))
 
+seznam <- as.list(skupine$povp_uvrstitev)
+for (i in 1:length(seznam)) {
+  seznam[i] = paste("Povprečna uvrstitev izbrane ekipe je", as.character(skupine$povp_uvrstitev),
+                    ", ekipa pa je na prvenstvih skupno zmagala", 
+                    as.character(skupine$st_zmage), "zmag.")
+}
+names(seznam) <- skupine$ekipa

@@ -1,8 +1,16 @@
 
 
-
-seznam <- as.list(skupine$povp_uvrstitev)
-names(seznam) <- skupine$ekipa
+seznam <- as.list(pom_skupine$uvrstitev)
+for (i in 1:length(seznam)) {
+  seznam[i] = paste("Najboljša uvrstitev izbrane ekipe je ", 
+                    as.character(pom_skupine$uvrstitev[i]),
+                    ". mesto, ki ga je ekipa nazadnje dosegla leta ",
+                    as.character(pom_skupine$leto[i]), 
+                    " na prvenstvu ", 
+                    pom_skupine$prizorisce[i],
+                    ".", sep = "")
+}
+names(seznam) <- pom_skupine$ekipa
 
 
 
@@ -14,7 +22,7 @@ fluidPage(
               choices = seznam), 
   
   hr(),
-  fluidRow(column(3, verbatimTextOutput("value")))
+  fluidRow(column(10, verbatimTextOutput("value")))
   
 )
 

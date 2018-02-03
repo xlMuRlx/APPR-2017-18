@@ -1,8 +1,10 @@
+
+
 library(shiny)
 
 function(input, output) {
   
-  output$value <- renderPrint({ input$select })
+  output$value <- renderPrint({input$select})
   
 }
 

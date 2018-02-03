@@ -64,4 +64,49 @@ graf.porocilo <- ggplot(tabela.graf, aes(x = leto, y = st_golov)) +
 colnames(napoved) <- c("Leto", "Število zadetkov", 
                        "Povprečno število zadetkov na tekmo", "Udeležba")
 
+pom_skupine <- aggregate(uvrstitev ~ ekipa, drop_na(koncne.uvrstitve), min)
+pom_skupine <- merge(pom_skupine, drop_na(koncne.uvrstitve))
+pom_skupine <- left_join(pom_skupine, skupine)
+pom_skupine <- pom_skupine[-c(4, 5)]
+pom_skupine1 <- aggregate(leto ~ ekipa, pom_skupine, max)
+pom_skupine <- merge(pom_skupine, pom_skupine1)
 
+prizorisca = c("v Urugvaju", "v Italiji", "v Franciji", "v Braziliji", "v Švici",
+               "na Švedskem", "v Čilu", "v Angliji", "v Mehiki", "v ZDA", 
+               "v Južni Koreji in na Japonskem", "v Nemčiji", "v Južni Afriki", 
+               "v Argentini", "v Španiji")
+
+pom_skupine$prizorisce <- NA
+for (i in 1:length(pom_skupine$prizorisce)) {
+  if (pom_skupine$leto[i] == 1930) {
+    pom_skupine$prizorisce[i] <- prizorisca[1]
+  } else if (pom_skupine$leto[i] == 1934 || pom_skupine$leto[i] == 1990) {
+    pom_skupine$prizorisce[i] <- prizorisca[2]
+  } else if (pom_skupine$leto[i] == 1938 || pom_skupine$leto[i] == 1998) {
+    pom_skupine$prizorisce[i] <- prizorisca[3]
+  } else if (pom_skupine$leto[i] == 1950 || pom_skupine$leto[i] == 2014) {
+    pom_skupine$prizorisce[i] <- prizorisca[4]
+  } else if (pom_skupine$leto[i] == 1954) {
+    pom_skupine$prizorisce[i] <- prizorisca[5]
+  } else if (pom_skupine$leto[i] == 1958) {
+    pom_skupine$prizorisce[i] <- prizorisca[6]
+  } else if (pom_skupine$leto[i] == 1962) {
+    pom_skupine$prizorisce[i] <- prizorisca[7]
+  } else if (pom_skupine$leto[i] == 1966) {
+    pom_skupine$prizorisce[i] <- prizorisca[8]
+  } else if (pom_skupine$leto[i] == 1970 || pom_skupine$leto[i] == 1986) {
+    pom_skupine$prizorisce[i] <- prizorisca[9]
+  } else if (pom_skupine$leto[i] == 1994) {
+    pom_skupine$prizorisce[i] <- prizorisca[10]
+  } else if (pom_skupine$leto[i] == 2002) {
+    pom_skupine$prizorisce[i] <- prizorisca[11]
+  } else if (pom_skupine$leto[i] == 1974 || pom_skupine$leto[i] == 2006) {
+    pom_skupine$prizorisce[i] <- prizorisca[12]
+  } else if (pom_skupine$leto[i] == 2010) {
+    pom_skupine$prizorisce[i] <- prizorisca[13]
+  } else if (pom_skupine$leto[i] == 1978) {
+    pom_skupine$prizorisce[i] <- prizorisca[14]
+  } else if (pom_skupine$leto[i] == 1982) {
+    pom_skupine$prizorisce[i] <- prizorisca[15]
+  }
+}

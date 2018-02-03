@@ -7,7 +7,7 @@ output:
     includes:
       in_header: lib/styles.sty
     latex_engine: xelatex
-#runtime: shiny
+runtime: shiny
 ---
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE}
@@ -164,3 +164,14 @@ Kot je iz tabele razvidno, naj bi število zadetkov na celotnem prvenstvu počas
 
 
 ***
+  
+# Napredna analiza podatkov
+  
+```{r nap_analiza, echo=FALSE, message=FALSE}
+source("analiza/analiza.r", encoding = "UTF-8")
+```
+
+  
+```{r shiny, echo = FALSE}
+shinyAppDir("shiny", options=list(width="100%", height=600))
+```
