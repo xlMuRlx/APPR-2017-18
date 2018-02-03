@@ -163,14 +163,6 @@ Kot je iz tabele razvidno, naj bi število zadetkov na celotnem prvenstvu počas
 **Zanimivost**: Glede na pridobljene podatke takoj ugotovimo, da se število vseh doseženih zadetkov ter število zadetkov na tekmo ne sklada, če je število tekem konstatno. Iz tega bi predpostavili, da se bo na prihajajočih prvenstvih moralo odigrati več tekem kot na prejšnjih, kar pa bi bilo mogoče le ob spremembi Fifinih pravil. V realnosti pa se izkaže, da je ta napoved pravzaprav pravilna, saj je 10. januarja 2017 FIFA sprejela odlog, da se bo svetovnega prvenstva leta 2026 udeležilo 48 in ne več 32 držav. To se bo seveda odražalo v večjem številu odigranih tekem, zaradi česar bo najverjetneje naraslo tudi število vseh doseženih zadetkov, za povprečno število zadetkov pa to niti ni nujno. Poleg tega se bo zaradi te odločitve Fife najbrž za napačno izkazala tudi moja napoved o udeležbi, saj se bo ob večjem številu tekem število obiskovalcev povečalo bolj sunkovito kot v preteklosti, česar pa seveda le z obravnavo preteklih podatkov nisem upošteval.
 
 
-***
-  
-# Napredna analiza podatkov
-  
-```{r nap_analiza, echo=FALSE, message=FALSE}
-source("analiza/analiza.r", encoding = "UTF-8")
-```
-
   
 ```{r shiny, echo = FALSE}
 shinyAppDir("shiny", options=list(width="100%", height=600))
