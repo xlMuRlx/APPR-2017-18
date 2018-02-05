@@ -101,10 +101,13 @@ graf.goli
 
 ## Nemčija in Brazilija
 
+<center>
 <div style="width:700px; height=400px">
 ![](http://www.hessetrindade.com.br/ingles/wpimages/wp9c02e8cb_05_06.jpg)
 </div>
+# {.centered}
 
+\newline
 
 Iz dosedaj prikazanih grafov lahko hitro opazimo, da sta najuspešnejši državi na svetovnih prvenstvih Brazilija in Nemčija. Prav zaradi tega sem se odločil, da o teh dveh, s pomočjo tabel `tretja` in `cetrta`, narišem grafa, ki prikazujeta gibanje doseženega končnega mesta Nemčije in Brazilije na svetovnih prvenstvih. Dodaten razlog, da sem se odločil ravno za ti dve državi je tudi ta, da sta se udeležili največ prvenstev, zato se tak graf zdi smieln.
 
