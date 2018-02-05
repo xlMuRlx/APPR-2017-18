@@ -131,7 +131,7 @@ Kot sem obljubil že pri zasnovi samega projekta, pa sem s pomočjo zadnje tabel
 graf.prvaki
 ```
 
-## Najboljše uvrstitve držav
+## Uvrstitve držav
 
 ```{r analiza, echo=FALSE, message=FALSE}
 source("analiza/analiza.r", encoding = "UTF-8")
