@@ -13,8 +13,8 @@ function(input, output) {
   
   output$grafi <- renderPlot({
     tabela <- koncne.uvrstitve %>% filter(ekipa == input$select)
-    print(ggplot(tabela, aes(x = round(leto), y = round(uvrstitev)), xlim = c(1930, 2014),
-                 ylim = c(1, 32)) + geom_point(size = 5) + 
+    print(ggplot(tabela,  aes(x = leto, y = uvrstitev), 
+                 xlim = c(1930, 2014), ylim = c(1, 32)) + geom_point(size = 5) + 
             xlab("Leto")+ ylab("Uvrstitev") + 
             ggtitle("Uvrstitve izbrane države na svetovnih prvenstvih"))
   })
