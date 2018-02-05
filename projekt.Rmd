@@ -137,10 +137,10 @@ graf.prvaki
 source("analiza/analiza.r", encoding = "UTF-8")
 ```
 
-Poleg vseh zgoraj opisanih analiz, sem se dodatno odločil še, da bom dodal spustni seznam, pri katerem lahko uporabnik izbere eno izmed dosedanjih udeleženk svetovnih prvenstev, program pa mu izpiše njeno najboljšo uvrstitev ter prvenstvo, na katerem jo je nazadnje doseglo. Za zadnji del, torej da program izpiše le prvenstvo, na katerem je izbrana država nazadnje dosegla svojo najbolšo uvrstitev, sem se odločil zaradi lažje sestave seznama , po katerem se podatki berejo ter posledično lažje zasnove programa.
+Poleg vseh zgoraj opisanih analiz, sem se dodatno odločil še, da bom dodal spustni seznam, pri katerem lahko uporabnik izbere eno izmed dosedanjih udeleženk svetovnih prvenstev, program pa mu izpiše njeno najboljšo uvrstitev ter prvenstvo, na katerem jo je nazadnje doseglo. Poleg tega pa še izriše graf vseh uvrstitev te države na prvenstvih, kjer je nastopala. Za del da program izpiše le prvenstvo, na katerem je izbrana država nazadnje dosegla svojo najbolšo uvrstitev, sem se odločil zaradi lažje sestave seznama, po katerem se podatki berejo ter posledično lažje zasnove programa.
 
 ```{r shiny, echo = FALSE}
-shinyAppDir("shiny", options=list(width="100%", height=220))
+shinyAppDir("shiny", options=list(width="100%", height=600))
 ```  
 
 
